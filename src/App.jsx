@@ -6,6 +6,7 @@ import Bookings from "./pages/Bookings/Bookings";
 import Login from "./pages/Auth/Login";
 
 import ProtectedRoute from "./ProtectedRoute";
+import MainLayout from "./layouts/MainLayout";
 
 export default function App() {
   return (
@@ -14,24 +15,17 @@ export default function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
 
-      {/* PROTECTED */}
+      {/* PROTECTED WITH LAYOUT */}
       <Route
-        path="/courts"
         element={
           <ProtectedRoute>
-            <Courts />
+            <MainLayout />
           </ProtectedRoute>
         }
-      />
-
-      <Route
-        path="/bookings"
-        element={
-          <ProtectedRoute>
-            <Bookings />
-          </ProtectedRoute>
-        }
-      />
+      >
+        <Route path="/courts" element={<Courts />} />
+        <Route path="/bookings" element={<Bookings />} />
+      </Route>
     </Routes>
   );
 }
