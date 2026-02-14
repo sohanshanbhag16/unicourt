@@ -27,6 +27,7 @@ export default function Login() {
 
       // ✅ Save only profile data (NO PASSWORD)
       login(res.profile);
+      console.log("LOGIN RESPONSE:", res);
 
       navigate("/courts");
     } catch (err) {
