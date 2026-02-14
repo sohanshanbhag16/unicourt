@@ -6,7 +6,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
 
-  // 🔥 Restore user from localStorage on app start
+  // ✅ Restore user from localStorage on app start
   useEffect(() => {
     const storedUser = localStorage.getItem("pesuUser");
     if (storedUser) {
@@ -15,14 +15,16 @@ export function AuthProvider({ children }) {
     setAuthLoading(false);
   }, []);
 
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("pesuUser", JSON.stringify(userData));
+  // ✅ Login
+  const login = (profile) => {
+    localStorage.setItem("pesuUser", JSON.stringify(profile));
+    setUser(profile);
   };
 
+  // ✅ Logout
   const logout = () => {
-    setUser(null);
     localStorage.removeItem("pesuUser");
+    setUser(null);
   };
 
   return (
