@@ -6,13 +6,20 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
 
-  // ✅ Restore user from localStorage on app start
+  // ✅ Restore user from localStorage on app start (safe + no warnings)
   useEffect(() => {
-    const storedUser = localStorage.getItem("pesuUser");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    try {
+      const storedUser = localStorage.getItem("pesuUser");
+
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (err) {
+      console.error("Failed to restore user:", err);
+      localStorage.removeItem("pesuUser");
+    } finally {
+      setAuthLoading(false);
     }
-    setAuthLoading(false);
   }, []);
 
   // ✅ Login
@@ -34,6 +41,7 @@ export function AuthProvider({ children }) {
   );
 }
 
+// ✅ Custom hook
 export function useAuth() {
   return useContext(AuthContext);
 }
