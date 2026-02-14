@@ -2,3 +2,18 @@ body {
   background: white;
 }
 
+/* ===============================
+   MOBILE GLOBAL FIXES
+=============================== */
+
+@media (max-width: 768px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  button {
+    min-height: 44px; /* Apple touch guideline */
+  }
+
+}

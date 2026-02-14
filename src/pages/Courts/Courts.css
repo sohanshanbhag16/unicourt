@@ -300,3 +300,40 @@ button {
 .fab-btn:hover {
   transform: translateY(-1px);
 }
+
+@media (max-width: 900px) {
+
+  .courts-main {
+    padding: 24px 16px;
+  }
+
+  .courts-grid {
+    gap: 20px;
+  }
+
+  .court-card {
+    padding: 20px;
+  }
+
+  .book-btn {
+    width: 100%;
+  }
+
+}
+
+/* booking panel full screen mobile */
+@media (max-width: 768px) {
+
+  .booking-panel {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+    padding: 24px 16px;
+  }
+
+  .slots-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+}

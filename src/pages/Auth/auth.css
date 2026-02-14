@@ -57,3 +57,12 @@
   font-weight: 600;
   cursor: pointer;
 }
+
+@media (max-width: 480px) {
+
+  .auth-card {
+    margin: 0 12px;
+    padding: 24px;
+  }
+
+}

@@ -112,3 +112,29 @@
     justify-content: center;
   }
 }
+
+@media (max-width: 768px) {
+
+  .landing {
+    padding: 32px 20px;
+  }
+
+  .landing-title {
+    font-size: 32px;
+  }
+
+  .landing-subtitle {
+    font-size: 15px;
+  }
+
+  .landing-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .landing-image img {
+    max-width: 100%;
+  }
+
+}
+
