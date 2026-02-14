@@ -2,7 +2,7 @@ import { useState } from "react";
 import { pesuLogin } from "../../services/pesu-auth";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import "./auth.css";
+import "./Auth.css";
 
 export default function Login() {
   const [srn, setSrn] = useState("");
