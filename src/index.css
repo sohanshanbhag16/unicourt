@@ -1,3 +1,26 @@
 body {
   background: white;
 }
+
+/* LIGHT MODE */
+body.light {
+  --bg: #ffffff;
+  --text: #111111;
+  --card: #f5f5f5;
+  --border: #e5e5e5;
+}
+
+/* DARK MODE */
+body.dark {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --card: #1e293b;
+  --border: #334155;
+}
+
+/* APPLY GLOBAL */
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.25s ease;
+}

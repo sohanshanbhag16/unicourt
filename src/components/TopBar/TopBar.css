@@ -1,11 +1,11 @@
 /* =========================
    TOP BAR
-   ========================= */
+========================= */
 
 .topbar {
   margin: 16px;
   padding: 16px 24px;
-  background: #ffffff;
+  background: var(--card);
   border-radius: 20px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
 }
@@ -16,7 +16,7 @@
 
 /* =========================
    INNER GRID
-   ========================= */
+========================= */
 
 .topbar-inner {
   max-width: 1200px;
@@ -29,23 +29,22 @@
 
 /* =========================
    LEFT
-   ========================= */
+========================= */
 
 .nav-left {
   justify-self: start;
-
 }
 
 .logo {
   font-size: 22px;
   font-weight: 600;
-  color: #111;
+  color: var(--text);
   letter-spacing: -0.3px;
 }
 
 /* =========================
    CENTER NAV
-   ========================= */
+========================= */
 
 .nav-center {
   justify-self: center;
@@ -60,17 +59,17 @@
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--muted);
   position: relative;
   transition: color 0.2s ease;
 }
 
 .nav a:hover {
-  color: #111;
+  color: var(--text);
 }
 
 .nav a.active {
-  color: #111;
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -81,13 +80,13 @@
   bottom: -6px;
   width: 100%;
   height: 2px;
-  background: #2563eb;
+  background: var(--accent);
   border-radius: 2px;
 }
 
 /* =========================
    RIGHT / PROFILE BUTTON
-   ========================= */
+========================= */
 
 .nav-right {
   justify-self: end;
@@ -99,8 +98,8 @@
   border-radius: 50%;
   border: none;
 
-  background: #f3f4f6;
-  color: #111;
+  background: var(--card);
+  color: var(--text);
 
   display: flex;
   align-items: center;
@@ -111,7 +110,7 @@
 }
 
 .cta-btn:hover {
-  background: #e5e7eb;
+  background: var(--hover);
   transform: translateY(-1px);
 }
 
@@ -121,65 +120,37 @@
 
 /* =========================
    PROFILE DRAWER
-   ========================= */
+========================= */
 
-/* Overlay */
 .panel-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.25);
+  background: rgba(0,0,0,0.35);
   z-index: 9998;
 }
 
-.fade-in {
-  animation: fadeIn 0.3s ease forwards;
-}
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+.fade-out { animation: fadeOut 0.3s ease forwards; }
 
-.fade-out {
-  animation: fadeOut 0.3s ease forwards;
-}
+.slide-in { animation: slideIn 0.3s cubic-bezier(.4,0,.2,1) forwards; }
+.slide-out { animation: slideOut 0.3s cubic-bezier(.4,0,.2,1) forwards; }
 
-/* Slide animations */
-.slide-in {
-  animation: slideIn 0.3s cubic-bezier(.4,0,.2,1) forwards;
-}
-
-.slide-out {
-  animation: slideOut 0.3s cubic-bezier(.4,0,.2,1) forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  to { opacity: 0; }
-}
-
-@keyframes slideIn {
-  from { transform: translateX(110%); }
-  to   { transform: translateX(0); }
-}
-
-@keyframes slideOut {
-  to { transform: translateX(110%); }
-}
-
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeOut { to { opacity: 0; } }
+@keyframes slideIn { from { transform: translateX(110%); } to { transform: translateX(0); } }
+@keyframes slideOut { to { transform: translateX(110%); } }
 
 .profile-panel {
   position: fixed;
-  top:8px;
-  bottom:8px;
-  right: 0px;
+  top: 8px;
+  bottom: 8px;
+  right: 0;
 
   width: 320px;
   height: calc(100vh - 32px);
 
-  background: #f9fafb;
-  height: 90vh;
+  background: var(--panel);
   border-radius: 20px;
-
   padding: 28px 24px;
   z-index: 9999;
 
@@ -188,13 +159,11 @@
   display: flex;
   flex-direction: column;
   font-family: "Source Sans 3", sans-serif;
-
-  animation: slideIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* =========================
    CLOSE BUTTON
-   ========================= */
+========================= */
 
 .profile-close {
   position: absolute;
@@ -206,8 +175,8 @@
   border-radius: 50%;
   border: none;
 
-  background: #e5e7eb;
-  color: #111;
+  background: var(--hover);
+  color: var(--text);
   font-size: 16px;
 
   display: flex;
@@ -219,13 +188,12 @@
 }
 
 .profile-close:hover {
-  background: #d1d5db;
   transform: scale(1.05);
 }
 
 /* =========================
    PROFILE HEADER
-   ========================= */
+========================= */
 
 .profile-header {
   display: flex;
@@ -238,8 +206,8 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--accent);
+  color: white;
 
   display: flex;
   align-items: center;
@@ -253,17 +221,17 @@
   margin: 0;
   font-size: 18px;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
 }
 
 .profile-srn {
   font-size: 13px;
-  color: #6b7280;
+  color: var(--muted);
 }
 
 /* =========================
    DETAILS LIST
-   ========================= */
+========================= */
 
 .profile-details {
   display: flex;
@@ -276,16 +244,16 @@
   justify-content: space-between;
   font-size: 14px;
   padding: 8px 0;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
 }
 
 .detail-row span:first-child {
-  color: #6b7280;
+  color: var(--muted);
 }
 
 .detail-row span:last-child {
   font-weight: 500;
-  color: #111;
+  color: var(--text);
 }
 
 .mono {
@@ -294,31 +262,8 @@
 }
 
 /* =========================
-   ANIMATION
-   ========================= */
-
-@keyframes slideIn {
-  from {
-    transform: translateX(110%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-.slide-out {
-  animation: slideOut 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes slideOut {
-  to {
-    transform: translateX(110%);
-  }
-}
-
-/* =========================
    MOBILE
-   ========================= */
+========================= */
 
 @media (max-width: 768px) {
   .nav-center {
@@ -330,15 +275,14 @@
   }
 }
 
-
 /* =========================
    LOGOUT BUTTON
-   ========================= */
+========================= */
 
 .logout-row {
-  margin-top: auto;          /* push to bottom */
+  margin-top: auto;
   padding-top: 24px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border);
 }
 
 .logout-btn {
@@ -360,37 +304,10 @@
   cursor: pointer;
 
   box-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    background 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.logout-btn i {
-  font-size: 14px;
-}
-
-/* Hover */
 .logout-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 12px 28px rgba(239, 68, 68, 0.45);
-}
-
-/* Active */
-.logout-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(239, 68, 68, 0.3);
-}
-
-/* Focus (accessibility) */
-.logout-btn:focus-visible {
-  outline: none;
-  box-shadow:
-    0 0 0 3px rgba(239, 68, 68, 0.35),
-    0 8px 20px rgba(239, 68, 68, 0.35);
-}
-.logout-btn:focus-visible:hover {
-  box-shadow:
-    0 0 0 3px rgba(239, 68, 68, 0.35),
-    0 12px 28px rgba(239, 68, 68, 0.45);
 }

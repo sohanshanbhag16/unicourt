@@ -71,7 +71,7 @@ const generateSlots = (start, end, bookedSlots, selectedDate) => {
 export default function Courts() {
   const user = useAuth().user;
 
-  const [selectedSport, setSelectedSport] = useState("All");
+  const [selectedSport, _setSelectedSport] = useState("All");
   const [activeCourt, setActiveCourt] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);

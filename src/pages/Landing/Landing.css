@@ -1,34 +1,33 @@
 /* =========================
    FULL SCREEN WRAPPER
-   ========================= */
+========================= */
 
 .landing {
-  min-height: 85vh;                 /* FULL SCREEN */
+  min-height: 85vh;
   display: flex;
-  align-items: center;               /* VERTICAL CENTER */
-  justify-content: center;           /* HORIZONTAL CENTER */
+  align-items: center;
+  justify-content: center;
 
   padding: 40px 32px;
-  background: #ffffff;
+  background: var(--bg);
 }
 
 /* =========================
    INNER CONTENT
-   ========================= */
+========================= */
 
 .landing-content,
 .landing-image {
   flex: 1;
 }
 
-/* Constrain content width */
 .landing-content {
   max-width: 480px;
 }
 
 /* =========================
    HEADLINE
-   ========================= */
+========================= */
 
 .landing-title {
   font-size: 48px;
@@ -36,23 +35,23 @@
   line-height: 1.1;
   letter-spacing: -1px;
   margin: 0 0 20px;
-  color: #111;
+  color: var(--text);
 }
 
 /* =========================
    SUBTITLE
-   ========================= */
+========================= */
 
 .landing-subtitle {
   font-size: 16px;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 32px;
   line-height: 1.6;
 }
 
 /* =========================
    CTA BUTTON
-   ========================= */
+========================= */
 
 .landing-btn {
   display: inline-flex;
@@ -60,8 +59,8 @@
   gap: 10px;
 
   padding: 14px 22px;
-  background: #111;
-  color: #fff;
+  background: var(--accent);
+  color: white;
   border: none;
   border-radius: 999px;
 
@@ -69,11 +68,11 @@
   font-weight: 600;
   cursor: pointer;
 
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .landing-btn:hover {
-  background: #000;
+  opacity: 0.9;
   transform: translateY(-1px);
 }
 
@@ -83,7 +82,7 @@
 
 /* =========================
    IMAGE
-   ========================= */
+========================= */
 
 .landing-image {
   display: flex;
@@ -91,7 +90,7 @@
 }
 
 .landing-image img {
-  width: 100%;              /* FIXED TYPO */
+  width: 100%;
   max-width: 520px;
   border-radius: 24px;
   object-fit: cover;
@@ -99,7 +98,7 @@
 
 /* =========================
    RESPONSIVE
-   ========================= */
+========================= */
 
 @media (max-width: 768px) {
   .landing {

@@ -3,7 +3,7 @@
 ======================= */
 .courts-layout {
   min-height: 100vh;
-  background: #f9fafb;
+  background: var(--bg);
 }
 
 .courts-main {
@@ -15,7 +15,7 @@
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 36px;
-  color: #111827;
+  color: var(--text);
   letter-spacing: -0.02em;
 }
 
@@ -43,7 +43,7 @@ button {
 }
 
 .court-card {
-  background: #ffffff;
+  background: var(--card);
   padding: 28px;
   border-radius: 16px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.04),
@@ -51,6 +51,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  border: 1px solid var(--border);
 }
 
 .court-card:hover {
@@ -63,8 +64,8 @@ button {
   padding: 6px 14px;
   font-size: 12px;
   border-radius: 999px;
-  background: #eef2ff;
-  color: #3730a3;
+  background: rgba(99,102,241,0.15);
+  color: var(--accent);
   font-weight: 500;
 }
 
@@ -76,15 +77,14 @@ button {
   width: 140px;
   border-radius: 10px;
   color: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
   font-weight: 500;
-  background: #111827;
+  background: var(--accent);
   cursor: pointer;
 }
 
 .book-btn:hover {
-  background: #6f6f6f;
-  color:black;
+  opacity: 0.9;
 }
 
 .book-btn:active {
@@ -97,7 +97,7 @@ button {
 .panel-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(17, 24, 39, 0.45);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
   z-index: 1000;
 }
@@ -116,14 +116,15 @@ button {
   top: 0;
   width: 72%;
   height: 88.75vh;
-  background: #ffffff;
+  background: var(--card);
   z-index: 10000;
   padding: 40px;
   display: flex;
   flex-direction: column;
   animation: slideIn 0.35s cubic-bezier(.4,0,.2,1);
-  color: #111827;
+  color: var(--text);
   border-radius: 24px 0 0 24px;
+  border-left: 1px solid var(--border);
 }
 
 @keyframes slideIn {
@@ -149,7 +150,7 @@ button {
 }
 
 .panel-subtitle {
-  color: #6b7280;
+  color: var(--muted);
   font-size: 14px;
 }
 
@@ -158,13 +159,10 @@ button {
   height: 36px;
   border-radius: 999px;
   border: none;
-  background: #f3f4f6;
+  background: var(--hover);
+  color: var(--text);
   font-size: 18px;
   cursor: pointer;
-}
-
-.panel-close:hover {
-  background: #e5e7eb;
 }
 
 /* =======================
@@ -181,20 +179,21 @@ button {
   cursor: pointer;
   flex: 1;
   border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  background: white;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
   font-weight: 500;
   font-size: 15px;
 }
 
 .date-pill:hover {
-  background: #c6c7c8;
+  background: var(--hover);
 }
 
 .date-pill.active {
-  background: #111827;
+  background: var(--accent);
   color: white;
-  border-color: #111827;
+  border-color: var(--accent);
 }
 
 /* =======================
@@ -207,10 +206,10 @@ button {
 }
 
 .time-section {
-  background: #f9fafb;
+  background: var(--bg);
   border-radius: 16px;
   padding: 20px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border);
 }
 
 .time-title {
@@ -218,7 +217,7 @@ button {
   margin-bottom: 16px;
   font-size: 15px;
   font-weight: 600;
-  color: #374151;
+  color: var(--muted);
 }
 
 .time-slots {
@@ -236,32 +235,31 @@ button {
   width: 140px;
   height: 44px;
   border-radius: 10px;
-  background: white;
-  border: 1px solid #e5e7eb;
+  background: var(--card);
+  border: 1px solid var(--border);
   font-weight: 500;
-  color: #111827;
+  color: var(--text);
   cursor: pointer;
 }
 
 .slot-button.selected {
-  background: #111827;        /* Dark professional tone */
+  background: var(--accent);
   color: white;
-  border-color: #111827;
+  border-color: var(--accent);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-
 .slot-button.available:hover {
-  background: #111827;
+  background: var(--accent);
   color: white;
-  border-color: #111827;
+  border-color: var(--accent);
 }
 
 .slot-button.booked,
 .slot-button:disabled {
-  background: #f3f4f6;
-  color: #9ca3af;
-  border-color: #e5e7eb;
+  background: var(--hover);
+  color: var(--muted);
+  border-color: var(--border);
   cursor: not-allowed;
 }
 
@@ -291,7 +289,7 @@ button {
 .fab-btn {
   padding: 14px 20px;
   border-radius: 999px;
-  background: #111827;
+  background: var(--accent);
   color: white;
   font-weight: 500;
   box-shadow: 0 12px 24px rgba(0,0,0,0.25);
