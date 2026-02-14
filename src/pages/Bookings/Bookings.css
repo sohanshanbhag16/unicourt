@@ -64,6 +64,15 @@
 .booking-card.upcoming {
   border-left: 6px solid #22c55e;
 }
+.booking-card.expired {
+  opacity: 0.6;
+}
+
+.cancel-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
 
 /* ========================
    LEFT CONTENT

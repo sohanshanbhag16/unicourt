@@ -58,11 +58,11 @@ export default function Bookings() {
   };
 
   const upcoming = bookings.filter(
-    (b) => getBookingDateTime(b) >= now
+    (b) => getBookingDateTime(b) > now
   );
 
   const past = bookings.filter(
-    (b) => getBookingDateTime(b) < now
+    (b) => getBookingDateTime(b) <= now
   );
 
   const handleCancel = async (booking) => {
@@ -98,7 +98,7 @@ export default function Bookings() {
               <BookingCard
                 key={b.id}
                 booking={b}
-                upcoming
+                isExpired={false}
                 onCancel={() => setConfirmBooking(b)}
               />
             ))}
@@ -114,7 +114,11 @@ export default function Bookings() {
         ) : (
           <div className="bookings-list">
             {past.map((b) => (
-              <BookingCard key={b.id} booking={b} />
+              <BookingCard
+                key={b.id}
+                booking={b}
+                isExpired={true}
+              />
             ))}
           </div>
         )}
@@ -157,9 +161,9 @@ export default function Bookings() {
   );
 }
 
-function BookingCard({ booking, upcoming, onCancel }) {
+function BookingCard({ booking, isExpired, onCancel }) {
   return (
-    <div className={`booking-card ${upcoming ? "upcoming" : ""}`}>
+    <div className={`booking-card ${isExpired ? "expired" : "upcoming"}`}>
       <div>
         <h3 className="court-name">{booking.courtName}</h3>
 
@@ -175,11 +179,11 @@ function BookingCard({ booking, upcoming, onCancel }) {
       </div>
 
       <div className="booking-actions">
-        <span className={`status ${upcoming ? "active" : "done"}`}>
-          {upcoming ? "Upcoming" : "Completed"}
+        <span className={`status ${isExpired ? "done" : "active"}`}>
+          {isExpired ? "Expired" : "Upcoming"}
         </span>
 
-        {upcoming && (
+        {!isExpired && (
           <button className="cancel-btn" onClick={onCancel}>
             Cancel
           </button>
