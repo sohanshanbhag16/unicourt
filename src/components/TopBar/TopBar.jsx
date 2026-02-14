@@ -10,13 +10,11 @@ import "@fontsource/source-sans-3/600.css";
 import "@fontsource/source-sans-3/700.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faBars, faTimes, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import "./TopBar.css";
 
 import { useAuth } from "../../context/AuthContext";
-
-const THEME_KEY = "unicourt-theme";
 
 export default function TopBar() {
   const { user, logout } = useAuth();
@@ -24,9 +22,6 @@ export default function TopBar() {
 
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [menuClosing, setMenuClosing] = useState(false);
-  const [isDark, setIsDark] = useState(() => document.body.classList.contains("dark"));
 
   const closePanel = () => {
     setClosing(true);
@@ -36,46 +31,19 @@ export default function TopBar() {
     }, 300);
   };
 
-  const closeMenu = () => {
-    setMenuClosing(true);
-    setTimeout(() => {
-      setMenuOpen(false);
-      setMenuClosing(false);
-    }, 300);
-  };
-
-  const toggleTheme = () => {
-    document.body.classList.toggle("dark");
-    const nowDark = document.body.classList.contains("dark");
-    localStorage.setItem(THEME_KEY, nowDark ? "dark" : "light");
-    setIsDark(nowDark);
-  };
-
-  useEffect(() => {
-    if (open || menuOpen) document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = ""; };
-  }, [open, menuOpen]);
-
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === "Escape") {
-        closePanel();
-        closeMenu();
-      }
+      if (e.key === "Escape") closePanel();
     };
 
-    if (open || menuOpen) window.addEventListener("keydown", handleEsc);
+    if (open) window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
-  }, [open, menuOpen]);
+  }, [open]);
 
   const handleLogout = () => {
     closePanel();
     logout();
     navigate("/");
-  };
-
-  const handleNavClick = () => {
-    closeMenu();
   };
 
   return (
@@ -89,9 +57,9 @@ export default function TopBar() {
           </div>
         </div>
 
-        {/* CENTER - desktop nav */}
+        {/* CENTER */}
         <div className="nav-center">
-          <nav className="nav" aria-label="Main navigation">
+          <nav className="nav">
             <NavLink to="/" end>Home</NavLink>
             <NavLink to="/courts">Courts</NavLink>
             <NavLink to="/bookings">My Bookings</NavLink>
@@ -100,67 +68,13 @@ export default function TopBar() {
 
         {/* RIGHT */}
         <div className="nav-right">
-          <button
-            type="button"
-            className="cta-btn theme-toggle"
-            onClick={toggleTheme}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            title={isDark ? "Light mode" : "Dark mode"}
-          >
-            <FontAwesomeIcon icon={isDark ? faSun : faMoon} />
-          </button>
-          <button
-            type="button"
-            className="hamburger-btn"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
-            aria-expanded={menuOpen}
-          >
-            <FontAwesomeIcon icon={faBars} />
-          </button>
-          <button
-            type="button"
-            className="cta-btn"
-            onClick={() => setOpen(true)}
-            aria-label="Profile"
-          >
+          {/* PROFILE */}
+          <button className="cta-btn" onClick={() => setOpen(true)}>
             <FontAwesomeIcon icon={faUser} />
           </button>
+
         </div>
       </div>
-
-      {/* Mobile nav drawer */}
-      {menuOpen && (
-        <div
-          className={`panel-overlay mobile-nav-overlay ${menuClosing ? "fade-out" : "fade-in"}`}
-          onClick={closeMenu}
-          aria-hidden="true"
-        >
-          <div
-            className={`mobile-nav-drawer ${menuClosing ? "slide-out-left" : "slide-in-left"}`}
-            onClick={(e) => e.stopPropagation()}
-            role="dialog"
-            aria-label="Navigation menu"
-          >
-            <div className="mobile-nav-header">
-              <span className="mobile-nav-title">Menu</span>
-              <button
-                type="button"
-                className="mobile-nav-close"
-                onClick={closeMenu}
-                aria-label="Close menu"
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </button>
-            </div>
-            <nav className="mobile-nav" aria-label="Mobile navigation">
-              <NavLink to="/" end onClick={handleNavClick}>Home</NavLink>
-              <NavLink to="/courts" onClick={handleNavClick}>Courts</NavLink>
-              <NavLink to="/bookings" onClick={handleNavClick}>My Bookings</NavLink>
-            </nav>
-          </div>
-        </div>
-      )}
 
       {open && (
         <div

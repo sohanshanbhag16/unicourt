@@ -76,16 +76,6 @@
   cursor: pointer;
 }
 
-.auth-error {
-  color: #dc2626;
-  font-size: 14px;
-  margin-bottom: 12px;
-}
-
-body.dark .auth-error {
-  color: #f87171;
-}
-
 @media (max-width: 480px) {
   .auth-container {
     padding: 16px 12px;

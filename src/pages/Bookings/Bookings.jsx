@@ -24,6 +24,7 @@ export default function Bookings() {
     if (authLoading) return;
 
     if (!user || !user.srn) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLoading(false);
       return;
     }

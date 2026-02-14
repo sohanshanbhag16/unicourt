@@ -1,16 +1,13 @@
 /* =======================
    BASE LAYOUT
 ======================= */
-
 .courts-layout {
   min-height: 100vh;
-  background: var(--bg-elevated);
+  background: #f9fafb;
 }
 
 .courts-main {
   padding: 48px;
-  max-width: 100%;
-  box-sizing: border-box;
 }
 
 .page-title {
@@ -18,27 +15,27 @@
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 36px;
-  color: var(--text-secondary);
+  color: #111827;
   letter-spacing: -0.02em;
 }
 
 /* =======================
    GLOBAL POLISH
 ======================= */
-
-.courts-layout * {
+* {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.courts-layout button {
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+button {
+  transition: background-color 0.25s ease,
+              transform 0.25s ease,
+              box-shadow 0.25s ease;
 }
 
 /* =======================
    COURTS GRID
 ======================= */
-
 .courts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -46,56 +43,48 @@
 }
 
 .court-card {
-  background: var(--card-bg);
+  background: #ffffff;
   padding: 28px;
   border-radius: 16px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04),
+              0 8px 24px rgba(0,0,0,0.06);
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
 .court-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06),
+              0 20px 40px rgba(0,0,0,0.08);
 }
 
+/* Badge */
 .sport-badge {
   padding: 6px 14px;
   font-size: 12px;
   border-radius: 999px;
-  background: var(--badge-sport-bg);
-  color: var(--badge-sport-text);
+  background: #eef2ff;
+  color: #3730a3;
   font-weight: 500;
-}
-
-.court-card h3 {
-  color: var(--text);
-  margin: 0;
-}
-
-.court-location {
-  color: var(--text-muted);
-  margin: 0;
 }
 
 /* =======================
    BUTTONS
 ======================= */
-
 .book-btn {
   padding: 12px 0;
-  min-height: 44px;
   width: 140px;
   border-radius: 10px;
-  color: var(--btn-primary-text);
-  border: 1px solid var(--border);
+  color: white;
+  border: 1px solid #e5e7eb;
   font-weight: 500;
-  background: var(--btn-primary);
+  background: #111827;
   cursor: pointer;
 }
 
 .book-btn:hover {
-  background: var(--btn-primary-hover);
+  background: #6f6f6f;
+  color:black;
 }
 
 .book-btn:active {
@@ -105,11 +94,10 @@
 /* =======================
    PANEL OVERLAY
 ======================= */
-
-.courts-layout .panel-overlay {
+.panel-overlay {
   position: fixed;
   inset: 0;
-  background: var(--overlay-bg-strong);
+  background: rgba(17, 24, 39, 0.45);
   backdrop-filter: blur(6px);
   z-index: 1000;
 }
@@ -122,25 +110,20 @@
 /* =======================
    SLIDE PANEL
 ======================= */
-
 .booking-panel {
   position: fixed;
   right: 0;
   top: 0;
   width: 72%;
-  max-width: 100%;
   height: 88.75vh;
-  max-height: 100vh;
-  background: var(--card-bg);
+  background: #ffffff;
   z-index: 10000;
   padding: 40px;
   display: flex;
   flex-direction: column;
-  animation: slideIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  color: var(--text-secondary);
+  animation: slideIn 0.35s cubic-bezier(.4,0,.2,1);
+  color: #111827;
   border-radius: 24px 0 0 24px;
-  overflow-y: auto;
-  box-sizing: border-box;
 }
 
 @keyframes slideIn {
@@ -149,7 +132,7 @@
 }
 
 .slide-out {
-  animation: slideOut 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: slideOut 0.25s cubic-bezier(.4,0,.2,1) forwards;
 }
 
 @keyframes slideOut {
@@ -159,82 +142,64 @@
 /* =======================
    PANEL HEADER
 ======================= */
-
 .panel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.panel-header h2 {
-  margin: 0;
-  color: var(--text);
-  font-size: 1.25rem;
-}
-
 .panel-subtitle {
-  color: var(--text-muted);
+  color: #6b7280;
   font-size: 14px;
 }
 
 .panel-close {
   width: 36px;
   height: 36px;
-  min-height: 44px;
   border-radius: 999px;
   border: none;
-  background: var(--btn-secondary-bg);
-  color: var(--btn-secondary-text);
+  background: #f3f4f6;
   font-size: 18px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .panel-close:hover {
-  background: var(--btn-secondary-hover);
+  background: #e5e7eb;
 }
 
 /* =======================
    DATE STRIP
 ======================= */
-
 .date-strip {
   display: flex;
   gap: 12px;
   margin: 32px 0;
-  flex-wrap: wrap;
 }
 
 .date-pill {
   padding: 14px;
-  min-height: 44px;
   cursor: pointer;
   flex: 1;
-  min-width: 120px;
   border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--card-bg);
+  border: 1px solid #e5e7eb;
+  background: white;
   font-weight: 500;
   font-size: 15px;
-  color: var(--text);
 }
 
 .date-pill:hover {
-  background: var(--btn-secondary-bg);
+  background: #c6c7c8;
 }
 
 .date-pill.active {
-  background: var(--btn-primary);
-  color: var(--btn-primary-text);
-  border-color: var(--btn-primary);
+  background: #111827;
+  color: white;
+  border-color: #111827;
 }
 
 /* =======================
    SLOT GRID
 ======================= */
-
 .slots-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -242,10 +207,10 @@
 }
 
 .time-section {
-  background: var(--bg-elevated);
+  background: #f9fafb;
   border-radius: 16px;
   padding: 20px;
-  border: 1px solid var(--border);
+  border: 1px solid #e5e7eb;
 }
 
 .time-title {
@@ -253,7 +218,7 @@
   margin-bottom: 16px;
   font-size: 15px;
   font-weight: 600;
-  color: var(--text-soft);
+  color: #374151;
 }
 
 .time-slots {
@@ -270,64 +235,39 @@
 .slot-button {
   width: 140px;
   height: 44px;
-  min-height: 44px;
   border-radius: 10px;
-  background: var(--card-bg);
-  border: 1px solid var(--border);
+  background: white;
+  border: 1px solid #e5e7eb;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: #111827;
   cursor: pointer;
 }
 
 .slot-button.selected {
-  background: var(--btn-primary);
-  color: var(--btn-primary-text);
-  border-color: var(--btn-primary);
-  box-shadow: var(--shadow-md);
+  background: #111827;        /* Dark professional tone */
+  color: white;
+  border-color: #111827;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
+
 .slot-button.available:hover {
-  background: var(--btn-primary);
-  color: var(--btn-primary-text);
-  border-color: var(--btn-primary);
+  background: #111827;
+  color: white;
+  border-color: #111827;
 }
 
 .slot-button.booked,
 .slot-button:disabled {
-  background: var(--btn-secondary-bg);
-  color: var(--text-muted);
-  border-color: var(--border);
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
   cursor: not-allowed;
-}
-
-/* =======================
-   FILTER FAB
-======================= */
-
-.filter-fab {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-}
-
-.fab-btn {
-  padding: 14px 20px;
-  min-height: 44px;
-  border-radius: 999px;
-  background: var(--btn-primary);
-  color: var(--btn-primary-text);
-  font-weight: 500;
-  box-shadow: var(--shadow-lg);
-}
-
-.fab-btn:hover {
-  transform: translateY(-1px);
 }
 
 /* =======================
    RESPONSIVE
 ======================= */
-
 @media (max-width: 900px) {
   .booking-panel {
     width: 100%;
@@ -339,19 +279,36 @@
   }
 }
 
-@media (max-width: 768px) {
+/* =======================
+   FILTER FAB
+======================= */
+.filter-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+}
+
+.fab-btn {
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: #111827;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+}
+
+.fab-btn:hover {
+  transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+
   .courts-main {
     padding: 24px 16px;
   }
 
-  .page-title {
-    font-size: 26px;
-    margin-bottom: 24px;
-  }
-
   .courts-grid {
     gap: 20px;
-    grid-template-columns: 1fr;
   }
 
   .court-card {
@@ -362,10 +319,14 @@
     width: 100%;
   }
 
+}
+
+/* booking panel full screen mobile */
+@media (max-width: 768px) {
+
   .booking-panel {
     width: 100%;
     height: 100vh;
-    max-height: 100dvh;
     border-radius: 0;
     padding: 24px 16px;
   }
@@ -375,25 +336,4 @@
     gap: 16px;
   }
 
-  .date-strip {
-    margin: 20px 0;
-  }
-
-  .date-pill {
-    min-width: 100%;
-  }
-
-  .slot-button {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .courts-main {
-    padding: 16px 12px;
-  }
-
-  .page-title {
-    font-size: 22px;
-  }
 }
