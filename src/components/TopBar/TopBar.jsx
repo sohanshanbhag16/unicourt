@@ -10,28 +10,29 @@ import "@fontsource/source-sans-3/400.css";
 import "@fontsource/source-sans-3/600.css";
 import "@fontsource/source-sans-3/700.css";
 
-/* Font Awesome */
+/* Icons */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import "./TopBar.css";
 import { useAuth } from "../../context/AuthContext";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function TopBar() {
   const { user, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
 
-  /* ---------- CLOSE HANDLER (with animation) ---------- */
+  /* ---------- CLOSE PANEL ---------- */
   const closePanel = () => {
     setClosing(true);
-
     setTimeout(() => {
       setOpen(false);
       setClosing(false);
-    }, 300); // must match CSS animation duration
+    }, 300);
   };
 
   /* ---------- ESC KEY ---------- */
@@ -47,13 +48,14 @@ export default function TopBar() {
   /* ---------- LOGOUT ---------- */
   const handleLogout = () => {
     closePanel();
-    logout();            // 🔥 real logout (clears context + localStorage)
-    navigate("/");       // optional redirect
+    logout();
+    navigate("/");
   };
 
   return (
     <header className="topbar">
       <div className="topbar-inner">
+
         {/* LEFT */}
         <div className="nav-left">
           <div className="logo">
@@ -72,6 +74,18 @@ export default function TopBar() {
 
         {/* RIGHT */}
         <div className="nav-right">
+
+          {/* 🌙 THEME TOGGLE */}
+          <button
+            className="cta-btn"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            title="Toggle theme"
+          >
+            {theme === "light" ? "🌙" : "☀️"}
+          </button>
+
+          {/* 👤 PROFILE */}
           <button
             className="cta-btn"
             onClick={() => setOpen(true)}
@@ -79,6 +93,7 @@ export default function TopBar() {
           >
             <FontAwesomeIcon icon={faUser} />
           </button>
+
         </div>
       </div>
 
@@ -93,16 +108,11 @@ export default function TopBar() {
             className={`profile-panel ${closing ? "slide-out" : "slide-in"}`}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close */}
-            <button
-              className="profile-close"
-              onClick={closePanel}
-              aria-label="Close profile"
-            >
+            <button className="profile-close" onClick={closePanel}>
               ✕
             </button>
 
-            {/* Header */}
+            {/* HEADER */}
             <div className="profile-header">
               <div className="profile-avatar">
                 {user?.name?.charAt(0) || "?"}
@@ -114,7 +124,7 @@ export default function TopBar() {
               </div>
             </div>
 
-            {/* Details */}
+            {/* DETAILS */}
             <div className="profile-details">
               <div className="detail-row"><span>Program</span><span>{user?.program}</span></div>
               <div className="detail-row"><span>Branch</span><span>{user?.branch}</span></div>
@@ -126,13 +136,13 @@ export default function TopBar() {
               <div className="detail-row"><span>PRN</span><span className="mono">{user?.prn}</span></div>
             </div>
 
-            {/* Logout */}
+            {/* LOGOUT */}
             <div className="logout-row">
               <button className="logout-btn" onClick={handleLogout}>
-                <i className="fa-solid fa-right-from-bracket"></i>
                 Logout
               </button>
             </div>
+
           </div>
         </div>
       )}
