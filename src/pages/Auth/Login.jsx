@@ -42,7 +42,7 @@ export default function Login() {
       <form className="auth-card" onSubmit={handleLogin}>
         <h2 className="auth-title">UniCourt Login</h2>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {error && <p className="auth-error">{error}</p>}
 
         <input
           className="auth-input"

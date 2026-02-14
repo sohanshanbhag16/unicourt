@@ -1,5 +1,126 @@
+/* ===============================
+   THEME: CSS VARIABLES
+   Light = default. Dark = body.dark
+=============================== */
+
+:root {
+  /* Surfaces */
+  --bg: #ffffff;
+  --bg-elevated: #f9fafb;
+  --bg-muted: #f3f4f6;
+  --bg-input: #ffffff;
+  --panel-bg: #f9fafb;
+  --card-bg: #ffffff;
+
+  /* Text */
+  --text: #111;
+  --text-secondary: #111827;
+  --text-muted: #6b7280;
+  --text-soft: #374151;
+
+  /* Borders */
+  --border: #e5e7eb;
+  --border-input: #ddd;
+
+  /* Accent / Primary */
+  --accent: #2563eb;
+  --accent-text: #ffffff;
+
+  /* Buttons - primary dark */
+  --btn-primary: #111827;
+  --btn-primary-hover: #000;
+  --btn-primary-text: #ffffff;
+  --btn-secondary-bg: #f3f4f6;
+  --btn-secondary-hover: #e5e7eb;
+  --btn-secondary-text: #111;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.2);
+  --shadow-overlay: rgba(0, 0, 0, 0.25);
+  --shadow-overlay-strong: rgba(17, 24, 39, 0.45);
+
+  /* Badges / Semantic */
+  --badge-sport-bg: #eef2ff;
+  --badge-sport-text: #3730a3;
+  --status-active-bg: #dcfce7;
+  --status-active-text: #166534;
+  --status-done-bg: #e5e7eb;
+  --status-done-text: #374151;
+  --danger-bg: #fee2e2;
+  --danger-bg-hover: #fecaca;
+  --danger-text: #b91c1c;
+  --danger-gradient: linear-gradient(135deg, #ef4444, #dc2626);
+  --danger-shadow: rgba(239, 68, 68, 0.35);
+  --success-border: #22c55e;
+
+  /* Logout button (keep gradient in light) */
+  --logout-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
+  --logout-shadow-hover: 0 12px 28px rgba(239, 68, 68, 0.45);
+}
+
+body.dark {
+  --bg: #0f1117;
+  --bg-elevated: #1a1d26;
+  --bg-muted: #252830;
+  --bg-input: #1a1d26;
+  --panel-bg: #1a1d26;
+  --card-bg: #1a1d26;
+
+  --text: #f1f5f9;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-soft: #cbd5e1;
+
+  --border: #334155;
+  --border-input: #475569;
+
+  --accent: #3b82f6;
+  --accent-text: #ffffff;
+
+  --btn-primary: #e2e8f0;
+  --btn-primary-hover: #f1f5f9;
+  --btn-primary-text: #0f1117;
+  --btn-secondary-bg: #334155;
+  --btn-secondary-hover: #475569;
+  --btn-secondary-text: #f1f5f9;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+  --shadow-overlay: rgba(0, 0, 0, 0.5);
+  --shadow-overlay-strong: rgba(0, 0, 0, 0.6);
+
+  --badge-sport-bg: #312e81;
+  --badge-sport-text: #c7d2fe;
+  --status-active-bg: #14532d;
+  --status-active-text: #bbf7d0;
+  --status-done-bg: #334155;
+  --status-done-text: #cbd5e1;
+  --danger-bg: #7f1d1d;
+  --danger-bg-hover: #991b1b;
+  --danger-text: #fecaca;
+  --danger-gradient: linear-gradient(135deg, #dc2626, #b91c1c);
+  --danger-shadow: rgba(220, 38, 38, 0.4);
+  --success-border: #22c55e;
+
+  --logout-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+  --logout-shadow-hover: 0 12px 28px rgba(220, 38, 38, 0.5);
+}
+
+/* ===============================
+   BASE
+=============================== */
+
+html {
+  overflow-x: hidden;
+}
+
 body {
-  background: white;
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 /* ===============================
@@ -7,13 +128,11 @@ body {
 =============================== */
 
 @media (max-width: 768px) {
-
   body {
     font-size: 15px;
   }
 
   button {
-    min-height: 44px; /* Apple touch guideline */
+    min-height: 44px; /* Touch-friendly */
   }
-
 }
