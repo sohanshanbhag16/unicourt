@@ -15,11 +15,9 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "./TopBar.css";
 
 import { useAuth } from "../../context/AuthContext";
-import { useTheme } from "../../context/ThemeContext";
 
 export default function TopBar() {
   const { user, logout } = useAuth();
-  const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
@@ -70,12 +68,6 @@ export default function TopBar() {
 
         {/* RIGHT */}
         <div className="nav-right">
-
-          {/* THEME TOGGLE */}
-          <button className="cta-btn" onClick={toggleTheme}>
-            {theme === "light" ? "🌙" : "☀️"}
-          </button>
-
           {/* PROFILE */}
           <button className="cta-btn" onClick={() => setOpen(true)}>
             <FontAwesomeIcon icon={faUser} />
