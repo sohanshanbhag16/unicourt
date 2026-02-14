@@ -1,7 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-/* Fonts */
 import "@fontsource/sansation/300.css";
 import "@fontsource/sansation/400.css";
 import "@fontsource/sansation/700.css";
@@ -10,11 +9,11 @@ import "@fontsource/source-sans-3/400.css";
 import "@fontsource/source-sans-3/600.css";
 import "@fontsource/source-sans-3/700.css";
 
-/* Icons */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import "./TopBar.css";
+
 import { useAuth } from "../../context/AuthContext";
 import { useTheme } from "../../context/ThemeContext";
 
@@ -26,7 +25,6 @@ export default function TopBar() {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
 
-  /* ---------- CLOSE PANEL ---------- */
   const closePanel = () => {
     setClosing(true);
     setTimeout(() => {
@@ -35,7 +33,6 @@ export default function TopBar() {
     }, 300);
   };
 
-  /* ---------- ESC KEY ---------- */
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") closePanel();
@@ -45,7 +42,6 @@ export default function TopBar() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, [open]);
 
-  /* ---------- LOGOUT ---------- */
   const handleLogout = () => {
     closePanel();
     logout();
@@ -75,68 +71,51 @@ export default function TopBar() {
         {/* RIGHT */}
         <div className="nav-right">
 
-          {/* 🌙 THEME TOGGLE */}
-          <button
-            className="cta-btn"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            title="Toggle theme"
-          >
+          {/* THEME TOGGLE */}
+          <button className="cta-btn" onClick={toggleTheme}>
             {theme === "light" ? "🌙" : "☀️"}
           </button>
 
-          {/* 👤 PROFILE */}
-          <button
-            className="cta-btn"
-            onClick={() => setOpen(true)}
-            aria-label="Open profile"
-          >
+          {/* PROFILE */}
+          <button className="cta-btn" onClick={() => setOpen(true)}>
             <FontAwesomeIcon icon={faUser} />
           </button>
 
         </div>
       </div>
 
-      {/* ---------- OVERLAY ---------- */}
       {open && (
         <div
           className={`panel-overlay ${closing ? "fade-out" : "fade-in"}`}
           onClick={closePanel}
         >
-          {/* ---------- PROFILE PANEL ---------- */}
           <div
             className={`profile-panel ${closing ? "slide-out" : "slide-in"}`}
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="profile-close" onClick={closePanel}>
-              ✕
-            </button>
+            <button className="profile-close" onClick={closePanel}>✕</button>
 
-            {/* HEADER */}
             <div className="profile-header">
               <div className="profile-avatar">
                 {user?.name?.charAt(0) || "?"}
               </div>
-
               <div>
                 <h3 className="profile-name">{user?.name || "Guest"}</h3>
                 <p className="profile-srn">{user?.srn}</p>
               </div>
             </div>
 
-            {/* DETAILS */}
             <div className="profile-details">
               <div className="detail-row"><span>Program</span><span>{user?.program}</span></div>
               <div className="detail-row"><span>Branch</span><span>{user?.branch}</span></div>
               <div className="detail-row"><span>Semester</span><span>{user?.semester}</span></div>
               <div className="detail-row"><span>Section</span><span>{user?.section}</span></div>
               <div className="detail-row"><span>Campus</span><span>{user?.campus}</span></div>
-              <div className="detail-row"><span>Email</span><span className="mono">{user?.email}</span></div>
-              <div className="detail-row"><span>Phone</span><span className="mono">{user?.phone}</span></div>
-              <div className="detail-row"><span>PRN</span><span className="mono">{user?.prn}</span></div>
+              <div className="detail-row"><span>Email</span><span>{user?.email}</span></div>
+              <div className="detail-row"><span>Phone</span><span>{user?.phone}</span></div>
+              <div className="detail-row"><span>PRN</span><span>{user?.prn}</span></div>
             </div>
 
-            {/* LOGOUT */}
             <div className="logout-row">
               <button className="logout-btn" onClick={handleLogout}>
                 Logout
