@@ -321,9 +321,6 @@
    ========================= */
 
 @media (max-width: 768px) {
-  .nav-center {
-    display: none;
-  }
 
   .profile-panel {
     width: calc(100vw - 32px);
