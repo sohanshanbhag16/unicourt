@@ -1,4 +1,9 @@
 import "./Landing.css";
+
+import image from "../../assets/images/image.png";
+
+
+
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
@@ -37,7 +42,7 @@ export default function Landing() {
 
       {/* RIGHT IMAGE */}
       <div className="landing-image">
-        <img src="/src/assets/images/image.png" alt="Court" />
+        <img src={image} />
       </div>
     </section>
   );
