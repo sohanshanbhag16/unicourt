@@ -1,0 +1,114 @@
+/* =========================
+   FULL SCREEN WRAPPER
+   ========================= */
+
+.landing {
+  min-height: 85vh;                 /* FULL SCREEN */
+  display: flex;
+  align-items: center;               /* VERTICAL CENTER */
+  justify-content: center;           /* HORIZONTAL CENTER */
+
+  padding: 40px 32px;
+  background: #ffffff;
+}
+
+/* =========================
+   INNER CONTENT
+   ========================= */
+
+.landing-content,
+.landing-image {
+  flex: 1;
+}
+
+/* Constrain content width */
+.landing-content {
+  max-width: 480px;
+}
+
+/* =========================
+   HEADLINE
+   ========================= */
+
+.landing-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin: 0 0 20px;
+  color: #111;
+}
+
+/* =========================
+   SUBTITLE
+   ========================= */
+
+.landing-subtitle {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* =========================
+   CTA BUTTON
+   ========================= */
+
+.landing-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 22px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.landing-btn:hover {
+  background: #000;
+  transform: translateY(-1px);
+}
+
+.arrow {
+  font-size: 16px;
+}
+
+/* =========================
+   IMAGE
+   ========================= */
+
+.landing-image {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.landing-image img {
+  width: 100%;              /* FIXED TYPO */
+  max-width: 520px;
+  border-radius: 24px;
+  object-fit: cover;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+  .landing {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .landing-image {
+    justify-content: center;
+  }
+}

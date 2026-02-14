@@ -1,0 +1,302 @@
+/* =======================
+   BASE LAYOUT
+======================= */
+.courts-layout {
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.courts-main {
+  padding: 48px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 36px;
+  color: #111827;
+  letter-spacing: -0.02em;
+}
+
+/* =======================
+   GLOBAL POLISH
+======================= */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  transition: background-color 0.25s ease,
+              transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+/* =======================
+   COURTS GRID
+======================= */
+.courts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.court-card {
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04),
+              0 8px 24px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.court-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06),
+              0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* Badge */
+.sport-badge {
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #3730a3;
+  font-weight: 500;
+}
+
+/* =======================
+   BUTTONS
+======================= */
+.book-btn {
+  padding: 12px 0;
+  width: 140px;
+  border-radius: 10px;
+  color: white;
+  border: 1px solid #e5e7eb;
+  font-weight: 500;
+  background: #111827;
+  cursor: pointer;
+}
+
+.book-btn:hover {
+  background: #6f6f6f;
+  color:black;
+}
+
+.book-btn:active {
+  transform: scale(0.98);
+}
+
+/* =======================
+   PANEL OVERLAY
+======================= */
+.panel-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+}
+
+.book-action {
+  display: flex;
+  justify-content: center;
+}
+
+/* =======================
+   SLIDE PANEL
+======================= */
+.booking-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 72%;
+  height: 88.75vh;
+  background: #ffffff;
+  z-index: 10000;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.35s cubic-bezier(.4,0,.2,1);
+  color: #111827;
+  border-radius: 24px 0 0 24px;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.slide-out {
+  animation: slideOut 0.25s cubic-bezier(.4,0,.2,1) forwards;
+}
+
+@keyframes slideOut {
+  to { transform: translateX(100%); }
+}
+
+/* =======================
+   PANEL HEADER
+======================= */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-subtitle {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.panel-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: none;
+  background: #f3f4f6;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.panel-close:hover {
+  background: #e5e7eb;
+}
+
+/* =======================
+   DATE STRIP
+======================= */
+.date-strip {
+  display: flex;
+  gap: 12px;
+  margin: 32px 0;
+}
+
+.date-pill {
+  padding: 14px;
+  cursor: pointer;
+  flex: 1;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.date-pill:hover {
+  background: #c6c7c8;
+}
+
+.date-pill.active {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+
+/* =======================
+   SLOT GRID
+======================= */
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.time-section {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+}
+
+.time-title {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.time-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slot-row {
+  display: flex;
+  justify-content: center;
+}
+
+.slot-button {
+  width: 140px;
+  height: 44px;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  font-weight: 500;
+  color: #111827;
+  cursor: pointer;
+}
+
+.slot-button.selected {
+  background: #111827;        /* Dark professional tone */
+  color: white;
+  border-color: #111827;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+.slot-button.available:hover {
+  background: #111827;
+  color: white;
+  border-color: #111827;
+}
+
+.slot-button.booked,
+.slot-button:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 900px) {
+  .booking-panel {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .slots-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =======================
+   FILTER FAB
+======================= */
+.filter-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+}
+
+.fab-btn {
+  padding: 14px 20px;
+  border-radius: 999px;
+  background: #111827;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+}
+
+.fab-btn:hover {
+  transform: translateY(-1px);
+}
