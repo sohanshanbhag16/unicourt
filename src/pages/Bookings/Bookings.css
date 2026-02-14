@@ -10,10 +10,6 @@
   box-sizing: border-box;
 }
 
-body.dark .bookings-layout {
-  background: var(--bg);
-}
-
 .page-title {
   font-size: 30px;
   font-weight: 700;
@@ -57,24 +53,16 @@ body.dark .bookings-layout {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   flex-wrap: wrap;
   gap: 16px;
 }
 
-body.dark .booking-card {
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-}
-
 .booking-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
-}
-
-body.dark .booking-card:hover {
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-lg);
 }
 
 .booking-card.upcoming {
@@ -192,7 +180,7 @@ body.dark .booking-card:hover {
 .confirm-overlay {
   position: fixed;
   inset: 0;
-  background: var(--shadow-overlay);
+  background: var(--overlay-bg);
   backdrop-filter: blur(4px);
   z-index: 1000;
 }
@@ -254,15 +242,15 @@ body.dark .booking-card:hover {
   min-height: 44px;
   border-radius: 999px;
   border: none;
-  background: #ef4444;
-  color: white;
+  background: var(--confirm-danger-bg);
+  color: var(--confirm-danger-text);
   cursor: pointer;
   transition: all 0.2s ease;
   font-weight: 500;
 }
 
 .confirm-yes:hover {
-  background: #dc2626;
+  background: var(--confirm-danger-hover);
   transform: translateY(-2px);
 }
 

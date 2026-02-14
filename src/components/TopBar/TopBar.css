@@ -152,7 +152,7 @@
 .panel-overlay {
   position: fixed;
   inset: 0;
-  background: var(--shadow-overlay);
+  background: var(--overlay-bg);
   z-index: 9998;
 }
 

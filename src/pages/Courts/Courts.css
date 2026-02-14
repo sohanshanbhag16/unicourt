@@ -56,11 +56,7 @@
 }
 
 .court-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06), 0 20px 40px rgba(0, 0, 0, 0.08);
-}
-
-body.dark .court-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-md);
 }
 
 .sport-badge {
@@ -102,14 +98,6 @@ body.dark .court-card:hover {
   background: var(--btn-primary-hover);
 }
 
-body.dark .book-btn {
-  color: var(--btn-primary-text);
-}
-
-body.dark .book-btn:hover {
-  background: var(--btn-primary-hover);
-}
-
 .book-btn:active {
   transform: scale(0.98);
 }
@@ -121,7 +109,7 @@ body.dark .book-btn:hover {
 .courts-layout .panel-overlay {
   position: fixed;
   inset: 0;
-  background: var(--shadow-overlay-strong);
+  background: var(--overlay-bg-strong);
   backdrop-filter: blur(6px);
   z-index: 1000;
 }
@@ -295,7 +283,7 @@ body.dark .book-btn:hover {
   background: var(--btn-primary);
   color: var(--btn-primary-text);
   border-color: var(--btn-primary);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-md);
 }
 
 .slot-button.available:hover {
@@ -329,7 +317,7 @@ body.dark .book-btn:hover {
   background: var(--btn-primary);
   color: var(--btn-primary-text);
   font-weight: 500;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--shadow-lg);
 }
 
 .fab-btn:hover {
