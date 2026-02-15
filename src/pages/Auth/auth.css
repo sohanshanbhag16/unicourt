@@ -1,9 +1,9 @@
 .auth-container {
-  min-height: 97vh;
+  min-height: 91vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-muted);
+  background: linear-gradient(to bottom right, #f9fafb, #f3f4f6);
   padding: 24px 16px;
 }
 
@@ -11,9 +11,9 @@
   width: 100%;
   max-width: 400px;
   padding: 32px;
-  background: var(--card-bg);
+  background: #ffffff;
   border-radius: 16px;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
 .auth-title {
@@ -28,13 +28,14 @@
   width: 94%;
   max-width: 100%;
   padding: 12px 14px;
-  min-height: 44px;
+  min-height: 30px;
   border-radius: 10px;
-  border: 1px solid var(--border-input);
+  border: 1px solid black;
+  font-family: "Inter", sans-serif;
   margin-bottom: 14px;
   font-size: 14px;
-  background: var(--bg-input);
-  color: var(--text);
+  background: #f9fafb;
+  color: #333333;
 }
 
 .auth-input::placeholder {
@@ -47,15 +48,16 @@
   min-height: 44px;
   border-radius: 10px;
   border: none;
-  background: var(--btn-primary);
-  color: var(--btn-primary-text);
+  background: black;
+  color: white;
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .auth-btn:hover:not(:disabled) {
-  background: var(--btn-primary-hover);
+  background-color: #333333;
+  transform: translateY(-2px);
 }
 
 .auth-btn:disabled {
