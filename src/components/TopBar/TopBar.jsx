@@ -11,6 +11,8 @@ import "@fontsource/source-sans-3/700.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
 
 import "./TopBar.css";
 
@@ -68,6 +70,9 @@ export default function TopBar() {
 
         {/* RIGHT */}
         <div className="nav-right">
+          <button className="cta-btn" onClick={() => setOpen(true)}>
+            <FontAwesomeIcon icon={faMoon} />
+          </button>
           {/* PROFILE */}
           <button className="cta-btn" onClick={() => setOpen(true)}>
             <FontAwesomeIcon icon={faUser} />
