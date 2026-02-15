@@ -90,7 +90,9 @@
    ========================= */
 
 .nav-right {
+  display:flex;
   justify-self: end;
+  flex-direction: row;;
 }
 
 .cta-btn {
