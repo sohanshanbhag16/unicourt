@@ -181,7 +181,13 @@ export default function Courts() {
       <main className="courts-main">
         <h1 className="page-title">Available Courts</h1>
 
-        {loadingCourts && <p>Loading courts...</p>}
+        {loadingCourts && (
+          <div className="loader-container">
+            <div className="spinner"></div>
+            <p className="loader-text">Loading courts...</p>
+          </div>
+        )}
+
 
         <div className="courts-grid">
           {filteredCourts.map((court) => (

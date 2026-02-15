@@ -1,4 +1,302 @@
+/*-------------------*/
+
+
+/* ===============================
+   LIGHT MODE (DEFAULT)
+=============================== */
+
 body {
   background: white;
+  color: black;
 }
 
+/* ===============================
+   DARK MODE OVERRIDES
+=============================== */
+
+body.dark {
+  background: #0a0a0a;
+  color: #e5e7eb;
+}
+
+/* ===== SURFACES ===== */
+
+body.dark .topbar{
+  background:#181818 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .spinner {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  /* subtle track */
+  border: 3px solid white;
+  border-top: 3px solid #000000;
+
+  animation: spin 0.8s linear infinite;
+}
+
+body.dark .loader-text {
+  color: #ffffff !important;
+}
+
+body.dark .court-card{
+  background: #181818 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .logo{
+  color: #e5e7eb !important;
+}
+
+body.dark .nav a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: #ffffff;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+/* hover text */
+body.dark .nav a:hover {
+  color: #ffffff;
+}
+
+/* active text */
+body.dark .nav a.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* underline base */
+body.dark .nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #2563eb;
+  border-radius: 2px;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* animate on hover */
+body.dark .nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* keep visible for active link */
+body.dark .nav a.active::after {
+  transform: scaleX(1);
+}
+
+body.dark .courts-layout {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .booking-card{
+
+}
+body.dark .auth-card{
+
+}
+body.dark .profile-panel{
+
+}
+body.dark .confirm-modal {
+
+}
+body.dark .booking-panel {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+/* ===== INPUTS ===== */
+
+body.dark input,
+body.dark .auth-input{
+  background: #020617 !important;
+  color: #e5e7eb !important;
+  border-color: #334155 !important;
+}
+
+/* ===== BUTTONS ===== */
+
+body.dark button {
+  color: #e5e7eb;
+}
+
+/* ===== SECONDARY TEXT ===== */
+
+body.dark .tagline,
+body.dark .subtitle,
+body.dark .booking-date,
+body.dark .booking-time,
+body.dark .profile-srn {
+  color: #94a3b8 !important;
+}
+
+/* ===== BORDERS ===== */
+
+body.dark * {
+  border-color: #334155 !important;
+}
+
+/* ===== OVERLAYS ===== */
+
+body.dark .panel-overlay,
+body.dark .confirm-overlay {
+  background: rgba(0,0,0,0.7) !important;
+}
+
+body.dark .cta-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+
+  background: #f3f4f6;
+  color: #111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+body.dark .cta-btn {
+  background: #2b2b2b;
+  color: #e5e7eb;
+}
+
+body.dark .cta-btn:hover {
+  background: #2d2d2d;
+  transform: translateY(-1px);
+}
+
+body.dark .cta-btn:active {
+  transform: translateY(0);
+}
+
+/*-------------------*/
+
+body.dark .courts-main {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .page-title {
+  color: #e5e7eb !important;
+}
+
+body.dark .sport-badge {
+  background: linear-gradient(135deg, #4d1d951d, #6c28d96e);
+  box-shadow: 0 0 6px rgba(139, 92, 246, 0.25);
+  color: #F3F4F6;
+}
+
+body.dark .book-btn {
+  background: #d5d5d5;
+  color: #000000;
+}
+
+body.dark .book-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+body.dark .panel-close {
+  background: #2b2b2b;
+  color: #e5e7eb;
+}
+
+body.dark .date-pill.active {
+  background: #181818 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .date-pill {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .time-section {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .time-title {
+  color: #e5e7eb !important;
+}
+
+body.dark .slot-button {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .slot-button.selected {
+  background: #2563eb !important;
+  color: white !important;
+  border-color: #2563eb !important;
+}
+
+body.dark .slot-button.available:hover {
+  background: #2563eb !important;
+  color: white !important;
+  border-color: #2563eb !important;
+}
+
+body.dark .slot-button.booked,
+body.dark .slot-button:disabled {
+  background: #111111 !important;
+  color: #6b7280 !important;
+  border-color: #334155 !important;
+  cursor: not-allowed;
+}
+
+body.dark .bookings-layout {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .bookings-section h2 {
+  color: #e5e7eb !important;
+}
+
+body.dark .booking-card {
+  background: #18181B;
+}
+
+body.dark .booking-card.upcoming {
+  border-left: 6px solid #22c55e !important;
+}
+
+body.dark .court-name {
+  color: white;
+}
+
+body.dark .status.active {
+  background: #22c55e !important;
+  color: white !important;
+}
+
+body.dark .cancel-btn {
+  background: #b91c1c !important;
+  color: #ffffff !important;
+}
+
+body.dark .cancel-btn:disabled {
+  background: #7f1d1d !important;
+  color: #ffffff !important;
+  cursor: not-allowed;
+}

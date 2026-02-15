@@ -65,16 +65,19 @@
   transition: color 0.2s ease;
 }
 
+/* hover text */
 .nav a:hover {
   color: #111;
 }
 
+/* active text */
 .nav a.active {
   color: #111;
   font-weight: 600;
 }
 
-.nav a.active::after {
+/* underline base */
+.nav a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -83,7 +86,22 @@
   height: 2px;
   background: #2563eb;
   border-radius: 2px;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
+
+/* animate on hover */
+.nav a:hover::after {
+  transform: scaleX(1);
+}
+
+/* keep visible for active link */
+.nav a.active::after {
+  transform: scaleX(1);
+}
+
 
 /* =========================
    RIGHT / PROFILE BUTTON

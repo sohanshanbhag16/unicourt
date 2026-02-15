@@ -3,11 +3,54 @@
 ======================= */
 .courts-layout {
   min-height: 100vh;
-  background: #f9fafb;
+  background: #ffffff;
 }
+
+/* =======================
+   LOADER
+======================= */
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  gap: 14px;
+}
+
+.loader-text {
+  font-size: 14px;
+  color: #9CA3AF;
+  letter-spacing: 0.3px;
+}
+
+/* PREMIUM DARK SPINNER */
+.spinner {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  /* subtle track */
+  border: 3px solid #27272A;
+
+  /* animated accent */
+  border-top: 3px solid #8B5CF6;
+
+  animation: spin 0.8s linear infinite;
+}
+
+/* smooth rotation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 
 .courts-main {
   padding: 48px;
+  border-radius: 0px;
 }
 
 .page-title {
@@ -15,7 +58,7 @@
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 36px;
-  color: #111827;
+  color: #000000;
   letter-spacing: -0.02em;
 }
 
@@ -46,26 +89,33 @@ button {
   background: #ffffff;
   padding: 28px;
   border-radius: 16px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04),
-              0 8px 24px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.14),
+              0 8px 24px rgba(0, 0, 0, 0.155);
   display: flex;
   flex-direction: column;
   gap: 14px;
+
+  /* animation setup */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .court-card:hover {
+  transform: translateY(-6px); /* moves up */
+
   box-shadow: 0 4px 12px rgba(0,0,0,0.06),
               0 20px 40px rgba(0,0,0,0.08);
 }
+
 
 /* Badge */
 .sport-badge {
   padding: 6px 14px;
   font-size: 12px;
   border-radius: 999px;
-  background: #eef2ff;
+  background: #8a6fc928;
   color: #3730a3;
   font-weight: 500;
+  text-align: center;
 }
 
 /* =======================
@@ -77,8 +127,8 @@ button {
   border-radius: 10px;
   color: white;
   border: 1px solid #e5e7eb;
-  font-weight: 500;
-  background: #111827;
+  font-weight: 700;
+  background: #000000;
   cursor: pointer;
 }
 
@@ -122,7 +172,7 @@ button {
   display: flex;
   flex-direction: column;
   animation: slideIn 0.35s cubic-bezier(.4,0,.2,1);
-  color: #111827;
+  color: #000000;
   border-radius: 24px 0 0 24px;
 }
 
@@ -192,7 +242,7 @@ button {
 }
 
 .date-pill.active {
-  background: #111827;
+  background: #000000;
   color: white;
   border-color: #111827;
 }
@@ -207,7 +257,7 @@ button {
 }
 
 .time-section {
-  background: #f9fafb;
+  background: #eff3f6;
   border-radius: 16px;
   padding: 20px;
   border: 1px solid #e5e7eb;
@@ -218,7 +268,7 @@ button {
   margin-bottom: 16px;
   font-size: 15px;
   font-weight: 600;
-  color: #374151;
+  color: #000000;
 }
 
 .time-slots {
@@ -238,28 +288,28 @@ button {
   border-radius: 10px;
   background: white;
   border: 1px solid #e5e7eb;
-  font-weight: 500;
-  color: #111827;
+  font-weight: 700;
+  color: #000000;
   cursor: pointer;
 }
 
 .slot-button.selected {
-  background: #111827;        /* Dark professional tone */
+  background: #000000;        /* Dark professional tone */
   color: white;
-  border-color: #111827;
+  border-color: #000000;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 
 .slot-button.available:hover {
-  background: #111827;
+  background: #000000;
   color: white;
-  border-color: #111827;
+  border-color: #000000;
 }
 
 .slot-button.booked,
 .slot-button:disabled {
-  background: #f3f4f6;
+  background: #ffffff;
   color: #9ca3af;
   border-color: #e5e7eb;
   cursor: not-allowed;
@@ -291,7 +341,7 @@ button {
 .fab-btn {
   padding: 14px 20px;
   border-radius: 999px;
-  background: #111827;
+  background: #000000;
   color: white;
   font-weight: 500;
   box-shadow: 0 12px 24px rgba(0,0,0,0.25);

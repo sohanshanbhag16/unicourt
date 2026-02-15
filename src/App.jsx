@@ -8,7 +8,6 @@ import Login from "./pages/Auth/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import MainLayout from "./layouts/MainLayout";
 
-
 export default function App() {
   return (
     <>

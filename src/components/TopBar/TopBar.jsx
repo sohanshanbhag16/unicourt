@@ -10,20 +10,46 @@ import "@fontsource/source-sans-3/600.css";
 import "@fontsource/source-sans-3/700.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import { faSun } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 import "./TopBar.css";
-
 import { useAuth } from "../../context/AuthContext";
 
 export default function TopBar() {
+
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
+
+  /* =========================
+     THEME STATE
+  ========================= */
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "dark") {
+      document.body.classList.add("dark");
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setDarkMode(true);
+    }
+  }, []);
+
+  const toggleDark = () => {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+    setDarkMode(isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  };
+
+
+  /* =========================
+     PROFILE PANEL
+  ========================= */
 
   const closePanel = () => {
     setClosing(true);
@@ -48,6 +74,10 @@ export default function TopBar() {
     navigate("/");
   };
 
+  /* =========================
+     UI
+  ========================= */
+
   return (
     <header className="topbar">
       <div className="topbar-inner">
@@ -70,9 +100,12 @@ export default function TopBar() {
 
         {/* RIGHT */}
         <div className="nav-right">
-          <button className="cta-btn" onClick={() => setOpen(true)}>
-            <FontAwesomeIcon icon={faMoon} />
+
+          {/* THEME TOGGLE */}
+          <button className="cta-btn" onClick={toggleDark}>
+            <FontAwesomeIcon icon={darkMode ? faSun : faMoon} />
           </button>
+
           {/* PROFILE */}
           <button className="cta-btn" onClick={() => setOpen(true)}>
             <FontAwesomeIcon icon={faUser} />

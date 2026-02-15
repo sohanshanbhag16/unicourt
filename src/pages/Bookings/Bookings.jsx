@@ -85,7 +85,6 @@ export default function Bookings() {
   return (
     <div className="bookings-layout">
       <Toaster richColors position="top-center" />
-      <h1 className="page-title">My Bookings</h1>
 
       {/* Upcoming */}
       <section className="bookings-section">
