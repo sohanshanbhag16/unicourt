@@ -92,7 +92,8 @@
 .nav-right {
   display:flex;
   justify-self: end;
-  flex-direction: row;;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .cta-btn {
