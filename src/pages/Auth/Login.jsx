@@ -25,10 +25,7 @@ export default function Login() {
         throw new Error(res.message || "Authentication failed");
       }
 
-      // ✅ Save only profile data (NO PASSWORD)
       login(res.profile);
-      console.log("LOGIN RESPONSE:", res);
-
       navigate("/courts");
     } catch (err) {
       setError(err.message);
@@ -39,8 +36,20 @@ export default function Login() {
 
   return (
     <div className="auth-container">
+
+      {/* BRAND */}
+      <div className="auth-header">
+        <h1 className="brand">UniCourt</h1>
+        <p className="tagline">
+          Book courts faster. Play more.
+        </p>
+      </div>
+
+      {/* LOGIN CARD */}
       <form className="auth-card" onSubmit={handleLogin}>
-        <h2 className="auth-title">UniCourt Login</h2>
+
+        <h2 className="welcome">Welcome Back</h2>
+        <p className="subtitle">Sign in using your PESU Credentials</p>
 
         {error && <p className="auth-error">{error}</p>}
 
@@ -62,8 +71,9 @@ export default function Login() {
         />
 
         <button className="auth-btn" disabled={loading}>
-          {loading ? "Signing in..." : "Login"}
+          {loading ? "Signing in..." : "Sign In"}
         </button>
+
       </form>
     </div>
   );
