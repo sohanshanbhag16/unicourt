@@ -95,6 +95,7 @@ export default function TopBar() {
             <NavLink to="/" end>Home</NavLink>
             <NavLink to="/courts">Courts</NavLink>
             <NavLink to="/bookings">My Bookings</NavLink>
+            <NavLink to="/bookings">Upcoming Sports Events</NavLink>
           </nav>
         </div>
 
