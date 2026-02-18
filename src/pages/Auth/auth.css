@@ -3,7 +3,7 @@
 ============================== */
 .auth-container {
   min-height: 92vh;
-  background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+  background: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@
 .brand {
   font-size: 42px;
   font-weight: 800;
-  background: linear-gradient(90deg, #232323, #535353);
+  background: linear-gradient(90deg, #ffffff, #bbb0b0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
@@ -31,7 +31,7 @@
 
 .tagline {
   margin-top: 6px;
-  color: #6b7280;
+  color: #ffffff;
   font-size: 15px;
 }
 
@@ -42,7 +42,7 @@
   width: 100%;
   max-width: 420px;
   padding: 34px;
-  background: white;
+  background: rgb(194, 194, 194);
   border-radius: 22px;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
 }
@@ -55,11 +55,12 @@
   font-size: 26px;
   font-weight: 700;
   margin-bottom: 4px;
+  color:black;
 }
 
 .subtitle {
   text-align: center;
-  color: #6b7280;
+  color: #000000;
   margin-bottom: 24px;
 }
 

@@ -8,7 +8,7 @@ import {
   where,
   setDoc,
   doc,
-  serverTimestamp,
+  serverTimestamp
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
@@ -40,7 +40,7 @@ const TIME_SECTIONS = {
 const formatTime = (hour) => `${hour}:00`;
 
 /* =======================
-   SLOT GENERATOR (WITH PAST CHECK)
+   SLOT GENERATOR
 ======================= */
 const generateSlots = (start, end, bookedSlots, selectedDate) => {
   const slots = [];
@@ -50,7 +50,6 @@ const generateSlots = (start, end, bookedSlots, selectedDate) => {
     const time = `${formatTime(h)} - ${formatTime(h + 1)}`;
     const isBooked = bookedSlots.includes(time);
 
-    // 🔥 CHECK IF SLOT IS IN THE PAST
     const slotDateTime = new Date(selectedDate);
     slotDateTime.setHours(h, 0, 0, 0);
 
@@ -71,18 +70,20 @@ const generateSlots = (start, end, bookedSlots, selectedDate) => {
 export default function Courts() {
   const user = useAuth().user;
 
-  const [selectedSport, _setSelectedSport] = useState("All");
   const [activeCourt, setActiveCourt] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
 
   const [courts, setCourts] = useState([]);
   const [loadingCourts, setLoadingCourts] = useState(true);
+
   const [bookedSlots, setBookedSlots] = useState([]);
   const [selectedDate, setSelectedDate] = useState(baseToday);
 
+  const [slotCounts, setSlotCounts] = useState({});
+
   /* =======================
-     LOCK SCROLL
+     LOCK BODY SCROLL
   ======================= */
   useEffect(() => {
     document.body.style.overflow = activeCourt ? "hidden" : "";
@@ -106,7 +107,55 @@ export default function Courts() {
   }, []);
 
   /* =======================
-     FETCH BOOKINGS
+     REAL-TIME SLOT COUNT
+     (EXCLUDES PAST + BOOKED)
+  ======================= */
+  useEffect(() => {
+    if (!courts.length) return;
+
+    const q = query(
+      collection(db, "bookings"),
+      where("date", "==", formatDate(selectedDate))
+    );
+
+    const unsub = onSnapshot(q, (snapshot) => {
+      const bookedPerCourt = {};
+      snapshot.docs.forEach((doc) => {
+        const { courtId } = doc.data();
+        bookedPerCourt[courtId] = (bookedPerCourt[courtId] || 0) + 1;
+      });
+
+      const now = new Date();
+      const counts = {};
+
+      courts.forEach((court) => {
+        let futureSlots = 0;
+
+        Object.values(TIME_SECTIONS).forEach((section) => {
+          for (let h = section.start; h < section.end; h++) {
+            const slotDateTime = new Date(selectedDate);
+            slotDateTime.setHours(h, 0, 0, 0);
+
+            const isPast =
+              formatDate(selectedDate) === formatDate(now) &&
+              slotDateTime <= now;
+
+            if (!isPast) futureSlots++;
+          }
+        });
+
+        const booked = bookedPerCourt[court.courtId] || 0;
+        counts[court.courtId] = Math.max(futureSlots - booked, 0);
+      });
+
+      setSlotCounts(counts);
+    });
+
+    return () => unsub();
+  }, [courts, selectedDate]);
+
+  /* =======================
+     FETCH BOOKINGS FOR PANEL
   ======================= */
   useEffect(() => {
     if (!activeCourt) return;
@@ -125,11 +174,9 @@ export default function Courts() {
     return () => unsub();
   }, [activeCourt, selectedDate]);
 
-  const filteredCourts =
-    selectedSport === "All"
-      ? courts
-      : courts.filter((c) => c.sport === selectedSport);
-
+  /* =======================
+     CLOSE PANEL
+  ======================= */
   const closePanel = () => {
     setIsClosing(true);
     setTimeout(() => {
@@ -174,6 +221,9 @@ export default function Courts() {
     }
   };
 
+  /* =======================
+     UI
+  ======================= */
   return (
     <div className="courts-layout">
       <Toaster richColors position="top-center" />
@@ -188,25 +238,37 @@ export default function Courts() {
           </div>
         )}
 
-
         <div className="courts-grid">
-          {filteredCourts.map((court) => (
-            <div key={court.courtId} className="court-card">
-              <span className="sport-badge">{court.sport}</span>
-              <h3>{court.name}</h3>
-              <p className="court-location">{court.location}</p>
+          {courts.map((court) => {
 
-              <button
-                className="book-btn"
-                onClick={() => {
-                  setSelectedSlot(null);
-                  setActiveCourt(court);
-                }}
-              >
-                View Slots →
-              </button>
-            </div>
-          ))}
+            const count = slotCounts[court.courtId];
+
+            let badgeClass = "sport-badge";
+            if (count === 0) badgeClass = "sold-out";
+            else if (count <= 3) badgeClass = "few-left";
+
+            return (
+              <div key={court.courtId} className="court-card">
+                <span className={badgeClass}>
+                  {count ?? "..."} slots available today
+                </span>
+
+                <h3>{court.name}</h3>
+                <p className="court-location">{court.location}</p>
+
+                <button
+                  className="book-btn"
+                  disabled={count === 0}
+                  onClick={() => {
+                    setSelectedSlot(null);
+                    setActiveCourt(court);
+                  }}
+                >
+                  {count === 0 ? "Fully Booked" : "View Slots →"}
+                </button>
+              </div>
+            );
+          })}
         </div>
       </main>
 
@@ -217,12 +279,9 @@ export default function Courts() {
           <div className={`booking-panel ${isClosing ? "slide-out" : ""}`}>
             <div className="panel-header">
               <h2>{activeCourt.name}</h2>
-              <button className="panel-close" onClick={closePanel}>
-                ✕
-              </button>
+              <button className="panel-close" onClick={closePanel}>✕</button>
             </div>
 
-            {/* DATE STRIP */}
             <div className="date-strip">
               {[baseToday, tomorrow].map((date) => (
                 <button
@@ -241,7 +300,6 @@ export default function Courts() {
               ))}
             </div>
 
-            {/* SLOTS */}
             <div className="slots-grid">
               {Object.entries(TIME_SECTIONS).map(([section, hours]) => (
                 <div key={section} className="time-section">

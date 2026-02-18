@@ -321,3 +321,37 @@ body.dark .cancel-btn:disabled {
   color: #ffffff !important;
   cursor: not-allowed;
 }
+
+body.dark .profile-panel {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .profile-name {
+  color: #e5e7eb !important;
+}
+
+body.dark .profile-srn {
+  color: white !important;
+}
+
+body.dark .detail-row span:first-child {
+  color: white !important;
+}
+body.dark .detail-row span:last-child {
+  color: white !important;
+}
+
+body.dark .confirm-modal {
+  background: #111111 !important;
+  color: #e5e7eb !important;
+}
+
+body.dark .confirm-no {
+  background: rgb(0, 172, 0) !important;
+  color: #ffffff !important;
+}
+
+body.dark .confirm-no:hover {
+  transform: translateY(-2px);
+}
