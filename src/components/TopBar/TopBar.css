@@ -40,7 +40,11 @@
   font-size: 22px;
   font-weight: 600;
   color: #111;
-  letter-spacing: -0.3px;
+  letter-spacing: 1px;
+}
+
+.logo:hover {
+  color: #2563eb;
 }
 
 /* =========================
@@ -127,7 +131,7 @@
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
+  ;
   transition: background 0.15s ease, transform 0.15s ease;
 }
 
@@ -235,7 +239,6 @@
   align-items: center;
   justify-content: center;
 
-  cursor: pointer;
   transition: background 0.15s ease, transform 0.15s ease;
 }
 
@@ -375,7 +378,7 @@
 
   font-size: 14px;
   font-weight: 600;
-  cursor: pointer;
+  ;
 
   box-shadow: 0 8px 20px rgba(239, 68, 68, 0.35);
   transition:

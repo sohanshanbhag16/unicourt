@@ -105,7 +105,7 @@
   color: white;
   font-weight: 600;
   font-size: 15px;
-  cursor: pointer;
+  ;
   transition: all 0.25s ease;
 }
 
@@ -132,7 +132,7 @@
 .signup span {
   color: #ff4d00;
   font-weight: 600;
-  cursor: pointer;
+  ;
 }
 
 /* ==============================
